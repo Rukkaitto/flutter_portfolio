@@ -47,7 +47,7 @@ class Loading extends StatelessWidget {
           curve: Curves.easeInOutCubic,
           repeatDelay: repeatDelay,
           child: Image.network(
-            'assets/images/ren.png',
+            'assets/assets/images/ren.png',
             scale: 1 / scale,
           ),
         ),
@@ -56,7 +56,7 @@ class Loading extends StatelessWidget {
           startDelay: takeYourTimeStartDelay,
           repeatDelay: repeatDelay,
           child: Image.network(
-            'assets/images/takeyourtime.png',
+            'assets/assets/images/takeyourtime.png',
             scale: 1 / scale * 1.2,
           ),
         ),
