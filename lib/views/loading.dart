@@ -46,8 +46,8 @@ class Loading extends StatelessWidget {
         Spinner(
           curve: Curves.easeInOutCubic,
           repeatDelay: repeatDelay,
-          child: Image.asset(
-            'images/ren.png',
+          child: Image.network(
+            'assets/images/ren.png',
             scale: 1 / scale,
           ),
         ),
@@ -55,8 +55,8 @@ class Loading extends StatelessWidget {
           curve: Curves.easeInOutCubic,
           startDelay: takeYourTimeStartDelay,
           repeatDelay: repeatDelay,
-          child: Image.asset(
-            'images/takeyourtime.png',
+          child: Image.network(
+            'assets/images/takeyourtime.png',
             scale: 1 / scale * 1.2,
           ),
         ),
