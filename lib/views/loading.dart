@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/utils/utils.dart';
+import 'package:flutter_portfolio/views/views.dart';
 import 'package:flutter_portfolio/widgets/widgets.dart';
 
 class Loading extends StatelessWidget {
@@ -10,9 +11,15 @@ class Loading extends StatelessWidget {
   static const desktopPadding = 50.0;
   static const repeatDelay = Duration(milliseconds: 300);
   static const takeYourTimeStartDelay = Duration(milliseconds: 250);
+  static const loadingDuration = Duration(seconds: 3);
 
   @override
   Widget build(BuildContext context) {
+    showHome(
+      context,
+      after: loadingDuration,
+    );
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: LayoutBuilder(
@@ -36,6 +43,24 @@ class Loading extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void showHome(BuildContext context, {required Duration after}) {
+    final Future<Home> waitForHome = Future.delayed(after, () => const Home());
+
+    waitForHome.then((value) {
+      Navigator.of(context).pushReplacement(
+        PageRouteBuilder(
+          pageBuilder: (BuildContext context, _, __) {
+            return value;
+          },
+          transitionsBuilder:
+              (_, Animation<double> animation, __, Widget child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        ),
+      );
+    });
   }
 
   Widget buildLoadingSpinner(double scale) {
