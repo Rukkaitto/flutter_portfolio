@@ -10,6 +10,7 @@ jobs:
       commit-token: ${{secrets.COMMIT_SECRET}}
       email: ${{secrets.EMAIL}}
       username: ${{secrets.USERNAME}}
+      repo-name: flutter_portfolio
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -18,14 +19,14 @@ jobs:
           channel: stable
       - run: flutter config --enable-web
       - run: flutter pub get
-      - run: flutter build web --release --base-href /flutter_portfolio/
+      - run: flutter build web --release --base-href /${{env.repo-name}}/
       - run: |
           cd build/web
           git init
           git config --global user.email ${{env.email}}
           git config --global user.name ${{env.username}}
           git status
-          git remote add origin https://${{env.commit-token}}@github.com/Rukkaitto/flutter_portfolio.git
+          git remote add origin https://${{env.commit-token}}@github.com/${{env.username}}/${{env.repo-name}}.git
           git checkout -b gh-pages
           git add --all
           git commit -m "update"
