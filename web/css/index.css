@@ -1,0 +1,29 @@
+body {
+  background-color: black;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100vh;
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 9rem;
+}
+
+@media (min-width: 768px) { 
+  .center {
+    justify-content: end;
+    align-items: end;
+  }
+
+  .spinner-container {
+    margin-right: 5rem;
+    margin-bottom: 2rem;
+  }
+}
